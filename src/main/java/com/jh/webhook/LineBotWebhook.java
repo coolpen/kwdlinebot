@@ -1,5 +1,7 @@
 package com.jh.webhook;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,7 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class LineBotWebhook {
 
-
+	private final Logger logger = LogManager.getLogger(LineBotWebhook.class);
+	
+	
 	@RequestMapping("/")
 	public String hello(){
 		return "Hey, Spring Boot 的 Hello World ! ";
@@ -37,6 +41,9 @@ public class LineBotWebhook {
 			@RequestHeader("X-Line-Signature") String signature
 			){
 
+		logger.info("body=" + body);
+		logger.info("X-Line-Sig=" + signature);
+		
 		return body + ",sig=" + signature;
 	}	
 	

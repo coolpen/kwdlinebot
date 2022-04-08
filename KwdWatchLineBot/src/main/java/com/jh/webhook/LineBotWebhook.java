@@ -25,8 +25,6 @@ public class LineBotWebhook {
 	public String lineWebhook2(
 			@RequestParam(value="name") String name
 			){
-		
-
 		return name;
 	}
 	
